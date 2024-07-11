@@ -1,17 +1,22 @@
-import './index.css'
-import Login from './login'
-import Nav from './navigation'
+import './index.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './login';
+import Nav from './navigation';
+import Cadastre from './cadastre'; // Supondo que você tenha uma página de cadastro
 
 function App() {
-
   return (
-    <>
+    <Router>
       <div>
         <Nav />
-        <Login />
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/cadastre" element={<Cadastre />} />
+        </Routes>
       </div>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
+
