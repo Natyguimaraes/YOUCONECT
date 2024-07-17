@@ -1,13 +1,9 @@
-import './cadastre.css';
+import '../styles/cadastre.css';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function Cadastre() {
     const navigate = useNavigate();
-
-    const navega = (route) => {
-        navigate(route);
-      }
 
     const [formData, setFormData] = useState({
         nomeCompleto: '',
@@ -51,13 +47,32 @@ function Cadastre() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+
         if (validateForm()) {
-            // Submit form data to the server
-            console.log('Form data:', formData);
-            // After successful form submission, navigate to home page
-            navigate('/home');
+            try {
+                console.log("dados a serem enviados:", formData);
+                const response = await fetch('http://localhost:3000/usuarios', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Erro ao enviar a solicitação: ${response.status}`);
+                }
+
+                const json = await response.json();
+                console.log(json);
+
+                // Após a submissão bem-sucedida do formulário, navegue para a página inicial
+                navigate('/home');
+            } catch (err) {
+                console.error("Erro ao enviar os dados", err);
+            }
         }
     };
 
@@ -150,4 +165,3 @@ function Cadastre() {
 }
 
 export default Cadastre;
-
