@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom';
 function Cadastre() {
     const navigate = useNavigate();
 
+    const navega = (route) => {
+        navigate(route);
+      }
+
     const [formData, setFormData] = useState({
         nomeCompleto: '',
         email: '',
@@ -52,6 +56,8 @@ function Cadastre() {
         if (validateForm()) {
             // Submit form data to the server
             console.log('Form data:', formData);
+            // After successful form submission, navigate to home page
+            navigate('/home');
         }
     };
 
@@ -137,10 +143,11 @@ function Cadastre() {
                 />
                 {errors.senha && <span className="error">{errors.senha}</span>}
                 <input type="submit" value="Cadastrar" id="cadastro" />
-                <a onClick={() => navigate('/login')} id="logar">Fazer login</a>
+                <a onClick={() => navigate('/')} id="logar">Fazer login</a>
             </form>
         </div>
     );
 }
 
 export default Cadastre;
+

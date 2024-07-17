@@ -31,7 +31,6 @@
 .cadastre-form input[type="password"],
 .cadastre-form input[type="date"],
 .cadastre-form select {
-    width: 100%;
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 8px;
@@ -94,9 +93,10 @@
 
     .cadastre-form input[type="text"],
     .cadastre-form input[type="password"],
-    .cadastre-form input[type="date"],
-    .cadastre-form select {
+    .cadastre-form input[type="date"]
+     {
         width: 100%;
         padding: 1rem;
     }
+
 }
