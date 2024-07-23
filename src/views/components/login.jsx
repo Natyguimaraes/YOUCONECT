@@ -8,7 +8,6 @@ function Login() {
     email: '',
     senha: '',
   });
-  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -23,25 +22,24 @@ function Login() {
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
-        throw new Error('Falha ao realizar o login');
+        throw new Error(`Erro ao enviar a solicitação: ${response.status}`);
       }
 
-      const data = await response.json();
-
-      if (data.success) {
+      const json = await response.json();
+      if (json.success) {
         navigate('/home');
       } else {
-        setError('Email ou senha incorretos');
+        console.error('Erro de login:', json.message);
+        // Exibir mensagem de erro para o usuário
       }
     } catch (err) {
-      console.error("Erro ao enviar os dados", err);
-      setError('Erro ao conectar ao servidor');
+      console.error('Erro ao enviar os dados', err);
     }
   };
 
@@ -55,23 +53,24 @@ function Login() {
           <div className="login-form">
             <h1>Faça seu login<b id="ponto-h1">.</b></h1>
             <form onSubmit={handleSubmit}>
-              <input 
-                type="text" 
-                name="email" 
-                id="email" 
-                placeholder="Email" 
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
+                autoComplete="email"
               />
-              <input 
-                type="password" 
-                name="senha" 
-                id="senha" 
-                placeholder="Senha" 
+              <input
+                type="password"
+                name="senha"
+                id="senha"
+                placeholder="Senha"
                 value={formData.senha}
                 onChange={handleChange}
+                autoComplete="current-password"
               />
-              {error && <span className="error">{error}</span>}
               <a href="#" className="forgot-password">Esqueci a Senha</a>
               <button type="submit" id="login">Entrar</button>
             </form>
@@ -86,4 +85,3 @@ function Login() {
 }
 
 export default Login;
-

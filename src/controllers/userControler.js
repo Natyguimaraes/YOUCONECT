@@ -1,25 +1,25 @@
-import {create, read, update, deletePes} from '../models/userModel.js';
+// userControler.js
 
-//Realizando insert (create)
+import { create, read, update, deletePes, login } from '../models/userModel.js';
 
-export async function createUsuario(req, res){
+// Realizando insert (create)
+export async function createUsuario(req, res) {
     const { nomeCompleto, email, telefone, data, genero, curso, senha } = req.body;
-    console.log('Dados recebidos do frontend:', {nomeCompleto, email, telefone, data, genero, curso, senha});
+    console.log('Dados recebidos do frontend:', { nomeCompleto, email, telefone, data, genero, curso, senha });
 
-    create (nomeCompleto, email, telefone, data, genero, curso, senha, (err, result) => {
+    create(nomeCompleto, email, telefone, data, genero, curso, senha, (err, result) => {
         if (err) {
             res.status(500).json({ error: err.message });
             return;
         }
-        res.status(201).json({mensagem: 'Usuário criado com sucesso'});
+        res.status(201).json({ mensagem: 'Usuário criado com sucesso' });
     });
 }
 
-//realizando consulta
-
+// Realizando consulta
 export async function getAllUsuarios(req, res) {
     read((err, usuarios) => {
-        if(err){
+        if (err) {
             res.status(500).json({ error: err.message });
             return;
         }
@@ -29,8 +29,7 @@ export async function getAllUsuarios(req, res) {
 
 export async function getUsuariosF(req, res) {
     const { id } = req.params;
-    
-    // Chame a função read para buscar uma pessoa específica pelo ID
+
     read(id, (err, usuario) => {
         if (err) {
             res.status(500).json({ error: err.message });
@@ -39,38 +38,53 @@ export async function getUsuariosF(req, res) {
         res.json(usuario);
     });
 }
-//realizando atualização
 
-export async function updateUsuario(req, res){
+// Realizando atualização
+export async function updateUsuario(req, res) {
     const { id } = req.params;
     const novosDados = req.body;
     update(id, novosDados, (err, result) => {
         if (err) {
-            res.status(500).json ({ error: err.message });
+            res.status(500).json({ error: err.message });
             return;
         }
 
-        // para verificar se houve alterações
         if (result.affectedRows === 0) {
             res.status(404).json({ error: 'Nenhuma pessoa encontrada para atualizar.' });
             return;
         }
 
-        // Se chegou aqui, a pessoa foi atualizada com sucesso
-        res.status(200).json({ message: 'Usuário atualizada com sucesso' });
+        res.status(200).json({ message: 'Usuário atualizado com sucesso' });
     });
 }
 
-//realizando delete (update/inativando)
-
+// Realizando delete (update/inativando)
 export async function deleteUsuario(req, res) {
     const { id } = req.params;
-    console.log('delete recebidos do frontend: ', {id});
+    console.log('delete recebidos do frontend: ', { id });
     deletePes(id, (err, result) => {
-        if(err) {
-            res.status(500).json({error: err.message});
+        if (err) {
+            res.status(500).json({ error: err.message });
             return;
         }
         res.send('Usuário excluído com sucesso');
+    });
+}
+
+// Realizando login
+export async function loginUsuario(req, res) {
+    const { email, senha } = req.body;
+
+    login(email, senha, (err, result) => {
+        if (err) {
+            res.status(500).json({ error: err.message });
+            return;
+        }
+
+        if (result.length > 0) {
+            res.json({ success: true, message: 'Login bem-sucedido' });
+        } else {
+            res.status(401).json({ success: false, message: 'Credenciais inválidas' });
+        }
     });
 }

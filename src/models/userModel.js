@@ -1,33 +1,32 @@
 import connection from '../database/db.js';
 
-export function read(callback){
-   connection.query('SELECT * from usuario', (err, result) => {
-       if (err) {
-           console.error('Erro ao ler dados do banco de dados:', err);
-           callback(err, null);
-           return;
-       }
-       console.log('Dados lidos do banco de dados:', result);
-       callback(null, result);
-   });
+export function create(nomeCompleto, email, telefone, data, genero, curso, senha, callback) {
+    const query = 'INSERT INTO usuarios (nomeCompleto, email, telefone, data, genero, curso, senha) VALUES (?, ?, ?, ?, ?, ?, ?)';
+    connection.query(query, [nomeCompleto, email, telefone, data, genero, curso, senha], callback);
 }
 
-export function create(nomeCompleto, email, telefone, data, genero, curso, senha, callback){
-   if (typeof callback !== 'function') {
-       console.error('O argumento de callback não é uma função.');
-       return;
-   }
-   connection.query('INSERT INTO usuario (nome_usuario, email_usuario, telefone_usuario, dataNasc_usuario, genero_usuario, curso_usuario, senha_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)', [nomeCompleto, email, telefone, data, genero, curso, senha], callback);
+export function read(id = null, callback) {
+    let query = 'SELECT * FROM usuarios';
+    if (id) {
+        query += ' WHERE id = ?';
+        connection.query(query, [id], callback);
+    } else {
+        connection.query(query, callback);
+    }
 }
 
-
-export function update(id, novoDados, callback) {
-   connection.query('UPDATE usuario SET ? WHERE id = ?', [novoDados, id], callback);
-
+export function update(id, novosDados, callback) {
+    const { nomeCompleto, email, telefone, data, genero, curso, senha } = novosDados;
+    const query = 'UPDATE usuarios SET nomeCompleto = ?, email = ?, telefone = ?, data = ?, genero = ?, curso = ?, senha = ? WHERE id = ?';
+    connection.query(query, [nomeCompleto, email, telefone, data, genero, curso, senha, id], callback);
 }
 
-export function deletePes(id, callback){
+export function deletePes(id, callback) {
+    const query = 'DELETE FROM usuarios WHERE id = ?';
+    connection.query(query, [id], callback);
+}
 
-   connection.query('DELETE from youconect_project.usuario where id = ?', [id], callback);
-
+export function login(email, senha, callback) {
+    const query = 'SELECT * FROM usuarios WHERE email = ? AND senha = ?';
+    connection.query(query, [email, senha], callback);
 }
