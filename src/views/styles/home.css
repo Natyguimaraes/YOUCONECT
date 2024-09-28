@@ -1,0 +1,36 @@
+body {
+    background-color: white;
+}
+
+.container_home {
+    margin-top: 20px ;
+ 
+}
+
+
+.container_projetos {
+
+    border: 1px solid black;
+    display: flex;
+    justify-content: left;
+    padding: 20px;
+
+}
+
+.container_projetos img {
+    width: 335px;
+    max-width: 100%;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+.container_usuarios {
+display: flex;
+justify-content: center;
+}
+
+.container_usuarios img{
+ width: 10%;
+ border-radius: 50%;
+ margin: 20px;
+}
