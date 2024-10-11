@@ -3,18 +3,14 @@ body {
 }
 
 .container_home {
-    margin-top: 20px ;
- 
+    margin-top: 20px;
 }
 
-
 .container_projetos {
-
     border: 1px solid black;
     display: flex;
     justify-content: left;
     padding: 20px;
-
 }
 
 .container_projetos img {
@@ -25,12 +21,39 @@ body {
 }
 
 .container_usuarios {
-display: flex;
-justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
-.container_usuarios img{
- width: 10%;
- border-radius: 50%;
- margin: 20px;
+.container_usuarios img {
+    width: 10%;
+    border-radius: 50%;
+    margin: 20px;
+}
+
+.home-links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.link-button .icon {
+    margin-right: 8px;
+    font-size: 20px;
+}
+
+.link-button:hover {
+    background-color: #e0e4e8;
 }

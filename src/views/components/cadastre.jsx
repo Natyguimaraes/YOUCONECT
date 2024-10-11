@@ -68,8 +68,8 @@ function Cadastre() {
                 const json = await response.json();
                 console.log(json);
 
-                // Após a submissão bem-sucedida do formulário, navegue para a página inicial
-                navigate('/home');
+                // Após a submissão bem-sucedida do formulário, navegue para a página Home
+                navigate('/home'); 
             } catch (err) {
                 console.error("Erro ao enviar os dados", err);
             }
@@ -128,24 +128,9 @@ function Cadastre() {
                     <select name="curso" id="curso" value={formData.curso} onChange={handleChange}>
                         <option value="">Curso</option>
                         <option value="Administração">Administração</option>
-                        <option value="Automação industrial">Automação industrial</option>
-                        <option value="Biotecnologia">Biotecnologia</option>
                         <option value="Desenvolvimento de sistemas">Desenvolvimento de sistemas</option>
-                        <option value="Edificações">Edificações</option>
-                        <option value="Eletromecânica">Eletromecânica</option>
-                        <option value="Eletrotécnica">Eletrotécnica</option>
-                        <option value="Logística">Logística</option>
-                        <option value="Manutenção automotiva">Manutenção automotiva</option>
-                        <option value="Marketing">Marketing</option>
-                        <option value="Mecânica">Mecânica</option>
-                        <option value="Mecatrônica">Mecatrônica</option>
-                        <option value="Multimídia">Multimídia</option>
-                        <option value="Petroquímica">Petroquímica</option>
-                        <option value="Qualidade">Qualidade</option>
                         <option value="Química">Química</option>
-                        <option value="Redes de computadores">Redes de computadores</option>
-                        <option value="Refrigeração e climatização">Refrigeração e climatização</option>
-                        <option value="Segurança do trabalho">Segurança do trabalho</option>
+                        {/* Adicione outros cursos aqui */}
                     </select>
                 </div>
                 <input
