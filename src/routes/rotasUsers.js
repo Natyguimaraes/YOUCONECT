@@ -1,25 +1,25 @@
-import './views/styles/index.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './views/components/login';
-import Nav from './views/components/navigation';
-import Cadastre from './views/components/cadastre'; 
-import Home from './views/components/home';
-import Chat from './views/components/chat'; 
+import express from 'express';
+import cors from 'cors';
+import { getAllUsuarios, getUsuariosF, createUsuario, updateUsuario, deleteUsuario, loginUsuario } from '../controllers/userControler.js';
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Nav />
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/cadastre" element={<Cadastre />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/chat" element={<Chat />} /> 
-        </Routes>
-      </div>
-    </Router>
-  );
-}
+const app = express();
 
-export default App;
+// Middleware
+app.use(express.json());
+app.use(cors());
+
+// Rotas
+app.get('/usuarios', getAllUsuarios);
+app.get('/usuarios/:id', getUsuariosF);
+app.post('/usuarios', createUsuario);
+app.put('/usuarios/:id', updateUsuario);
+app.delete('/usuarios/:id', deleteUsuario);
+app.post('/login', loginUsuario); // Rota de login adicionada
+
+// Inicia o servidor
+app.listen(3000, () => {
+    console.log('Servidor rodando com sucesso na porta 3000');
+});
+
+export default app;
+
