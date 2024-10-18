@@ -10,8 +10,11 @@ function Home() {
         const fetchUsuarios = async () => {
             try {
                 const response = await fetch('http://localhost:3000/usuarios');
+                if (!response.ok) {
+                    throw new Error(`Erro ao buscar usuários: ${response.status}`);
+                }
                 const data = await response.json();
-                
+        
                 // Verifique se data é um array
                 if (Array.isArray(data)) {
                     setUsuarios(data);

@@ -24,6 +24,14 @@ export async function getAllUsuarios(req, res) {
             res.status(500).json({ error: err.message });
             return;
         }
+
+        // Verifique se 'usuarios' é um array
+        if (!Array.isArray(usuarios)) {
+            console.error("Dados retornados não são um array:", usuarios);
+            res.status(500).json({ error: "Dados retornados não são um array" });
+            return;
+        }
+
         console.log("Usuários lidos:", usuarios);
         res.json(usuarios);
     });

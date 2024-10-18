@@ -5,15 +5,17 @@ export function create(nomeCompleto, email, telefone, data, genero, curso, senha
     connection.query(query, [nomeCompleto, email, telefone, data, genero, curso, senha], callback);
 }
 
-export function read(id = null, callback) {
-    let query = 'SELECT * FROM usuarios';
-    if (id) {
-        query += ' WHERE id = ?';
-        connection.query(query, [id], callback);
-    } else {
-        connection.query(query, callback);
-    }
+export function read(callback) {
+    const query = 'SELECT * FROM usuarios';
+    connection.query(query, (error, results) => {
+        if (error) {
+            return callback(error);
+        }
+        console.log("Resultados da consulta:", results);
+        callback(null, results);
+    });
 }
+
 
 export function update(id, novosDados, callback) {
     const { nomeCompleto, email, telefone, data, genero, curso, senha } = novosDados;
