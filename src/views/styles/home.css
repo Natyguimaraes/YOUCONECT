@@ -9,12 +9,13 @@ body {
 .container_projetos {
     border: 1px solid black;
     display: flex;
-    justify-content: left;
-    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .container_projetos img {
-    width: 335px;
+    width: 500px;
     max-width: 100%;
     border: 2px solid black;
     margin: 10px;
@@ -26,7 +27,7 @@ body {
 }
 
 .container_usuarios img {
-    width: 10%;
+    width: 5%;
     border-radius: 50%;
     margin: 20px;
 }

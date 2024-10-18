@@ -20,12 +20,15 @@ export async function createUsuario(req, res) {
 export async function getAllUsuarios(req, res) {
     read((err, usuarios) => {
         if (err) {
+            console.error("Erro ao ler usuários:", err);
             res.status(500).json({ error: err.message });
             return;
         }
+        console.log("Usuários lidos:", usuarios);
         res.json(usuarios);
     });
 }
+
 
 export async function getUsuariosF(req, res) {
     const { id } = req.params;
