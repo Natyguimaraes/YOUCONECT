@@ -4,6 +4,7 @@ import Login from './views/components/login';
 import Nav from './views/components/navigation';
 import Cadastre from './views/components/cadastre'; // Supondo que você tenha uma página de cadastro
 import Home from './views/components/home';
+import Pesquisa from './views/components/pesquisa';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/cadastre" element={<Cadastre />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/pesquisa" element={<Pesquisa />}/>
         </Routes>
       </div>
     </Router>

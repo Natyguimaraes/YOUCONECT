@@ -14,6 +14,8 @@ function Home() {
                     throw new Error(`Erro ao buscar usuários: ${response.status}`);
                 }
                 const data = await response.json();
+console.log(data); // Adicione esta linha para verificar o retorno
+
         
                 // Verifique se data é um array
                 if (Array.isArray(data)) {
@@ -42,8 +44,14 @@ function Home() {
                 </div>
              
                 <h1>Usuários Sugeridos</h1>
-                <Usuarios usuarios={usuarios} />
+              
+                <Usuarios usuarios={usuarios} />  
+
             </div>
+            <br>
+            </br>
+            <br>
+            </br>
 
             <FooterMenu />
         </div>

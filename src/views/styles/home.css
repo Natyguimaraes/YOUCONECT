@@ -21,15 +21,33 @@ body {
     margin: 10px;
 }
 
+
+div.container_usuarios {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
 .container_usuarios {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-wrap: wrap; /* Permite quebra de linha se necessário */
+    max-width: 800px; /* Defina uma largura máxima */
+    margin: 0 auto; /* Centraliza a div no contêiner pai */
+    padding: 20px; /* Espaçamento interno, se necessário */
+}
+
+
+.container_usuarios > div {
+    display: flex;
+    flex-direction: column; /* Coloca a imagem e o nome em coluna */
+    align-items: center; /* Centraliza os itens dentro de cada div */
 }
 
 .container_usuarios img {
-    width: 20%;
-    border-radius: 50%;
-    margin: 10px;
+width: 40%;
+border-radius: 50%;
 }
 
 .home-links {

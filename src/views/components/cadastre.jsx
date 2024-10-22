@@ -21,7 +21,7 @@ function Cadastre() {
         const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         return re.test(String(email).toLowerCase());
     };
-
+    
     const validateTelefone = (telefone) => {
         const re = /^\d{10,11}$/;
         return re.test(String(telefone));

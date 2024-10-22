@@ -8,12 +8,12 @@ function Usuarios({ usuarios }) {
     return (
         <div className="container_usuarios">
             {usuariosParaExibir.length > 0 ? (
-                usuariosParaExibir.map((usuario, index) => (
-                    <div key={index}>
-                        <img src="./imgperfil.jpg" alt={usuario.nomeCompleto} />
-                        <p>{usuario.nomeCompleto}</p> {/* Adicione mais detalhes aqui, se necessário */}
-                    </div>
-                ))
+               usuariosParaExibir.map((usuario, index) => (
+                <div key={index}>
+                    <img src="./imgperfil.jpg" alt={usuario.nomeCompleto} />
+                    <p>{usuario.nomeCompleto ? usuario.nomeCompleto : "Nome não disponível"}</p>
+                </div>
+            ))    
             ) : (
                 <p>Nenhum usuário disponível.</p>
             )}
