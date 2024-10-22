@@ -5,6 +5,7 @@ import Nav from './views/components/navigation';
 import Cadastre from './views/components/cadastre'; // Supondo que você tenha uma página de cadastro
 import Home from './views/components/home';
 import Pesquisa from './views/components/pesquisa';
+import Chat from './views/components/chat';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/cadastre" element={<Cadastre />} />
           <Route path="/home" element={<Home />} />
           <Route path="/pesquisa" element={<Pesquisa />}/>
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </div>
     </Router>
