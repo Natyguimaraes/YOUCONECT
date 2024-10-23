@@ -2,23 +2,12 @@ body {
     background-color: white;
 }
 
+.container_pai {
+margin-bottom: 100px;
+}
+
 .container_home {
     margin-top: 20px;
-}
-
-.container_projetos {
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.container_projetos img {
-    width: 500px;
-    max-width: 100%;
-    border: 2px solid black;
-    margin: 10px;
 }
 
 
@@ -36,8 +25,8 @@ align-items: center;
     max-width: 800px; /* Defina uma largura máxima */
     margin: 0 auto; /* Centraliza a div no contêiner pai */
     padding: 20px; /* Espaçamento interno, se necessário */
+  
 }
-
 
 .container_usuarios > div {
     display: flex;
@@ -75,4 +64,55 @@ border-radius: 50%;
 
 .link-button:hover {
     background-color: #e0e4e8;
+}
+
+/*timelime */
+
+.timeline {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.timeline-item {
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.timeline-content {
+    padding: 10px;
+}
+
+.timeline-content img {
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.timeline-content h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+
+.timeline-content p {
+    color: #555;
+}
+
+.likes {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.like-button {
+    cursor: pointer;
+    font-size: 1.5em;
+    margin-right: 10px;
+}
+
+.like-count {
+    color: #888;
 }

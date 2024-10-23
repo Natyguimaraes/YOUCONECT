@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles/home.css";
+import "../styles/pesquisa.css";
 import Usuarios from "./usuarios"; // Certifique-se de que o caminho está correto
 import FooterMenu from "./FooterMenu";
 import { FaSearch } from "react-icons/fa";

@@ -21,7 +21,12 @@ function Cadastre() {
         const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         return re.test(String(email).toLowerCase());
     };
-    
+
+    const validateEmailDomain = (email) => {
+        const dominioPermitido = '@ba.estudante.senai.br';
+        return email.endsWith(dominioPermitido);
+    };
+
     const validateTelefone = (telefone) => {
         const re = /^\d{10,11}$/;
         return re.test(String(telefone));
@@ -31,7 +36,11 @@ function Cadastre() {
         let formErrors = {};
 
         if (!formData.nomeCompleto) formErrors.nomeCompleto = 'Nome completo é obrigatório';
-        if (!formData.email || !validateEmail(formData.email)) formErrors.email = 'Email inválido';
+        if (!formData.email || !validateEmail(formData.email)) {
+            formErrors.email = 'Email inválido';
+        } else if (!validateEmailDomain(formData.email)) {
+            formErrors.email = 'Email deve ser da instituição @ba.estudante.senai.br';
+        }
         if (!formData.telefone || !validateTelefone(formData.telefone)) formErrors.telefone = 'Telefone inválido';
         if (!formData.data) formErrors.data = 'Data de nascimento é obrigatória';
         if (formData.senha.length < 8) formErrors.senha = 'Senha deve ter pelo menos 8 caracteres';
