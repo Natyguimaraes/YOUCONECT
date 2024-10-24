@@ -24,8 +24,8 @@ const LikeProjetos = () => {
                         <h2>{projeto.nome}</h2>
                         <p>{projeto.descricao}</p>
                         <div className="likes">
-                            <span className="like-button" onClick={() => handleLike(index)}>❤️</span>
-                            <span className="like-count">{likes[index]} curtidas</span>
+                            <span className="like-button" onClick={() => handleLike(index)}>💙</span>
+                            <span className="like-count">{likes[index]} conectes </span>
                         </div>
                     </div>
                 </div>
