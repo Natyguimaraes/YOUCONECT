@@ -17,7 +17,7 @@ function FooterMenu() {
             <Link to="/chat">
                 <FaRegCommentDots />
             </Link>
-            <Link to="/profile">
+            <Link to="/perfil">
                 <FaUser />
             </Link>
         </div>

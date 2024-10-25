@@ -89,6 +89,7 @@ function Cadastre() {
         <div className="cadastre-container">
             <form onSubmit={handleSubmit} className="cadastre-form">
                 <h1>Criar uma conta</h1>
+                
                 <input
                     type="text"
                     name="nomeCompleto"
