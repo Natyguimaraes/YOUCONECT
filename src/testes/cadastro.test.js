@@ -1,3 +1,5 @@
+//testes para verificar se o email é válido e se o domínio é válido
+
 // Importa a biblioteca React para usar componentes e hooks.
 import React from 'react';
 // Importa o MemoryRouter para simular o roteamento em testes.
@@ -38,6 +40,8 @@ test('testando se é aceito somente o domínio @ba.estudante.senai.br', () => {
     fireEvent.click(submitButton);
     // Verifica se a mensagem de erro não aparece na tela, indicando que o domínio é aceito.
     expect(screen.queryByText('Email deve ser da instituição @ba.estudante.senai.br')).not.toBeInTheDocument();
+
+    //queryByText para retornar vazio caso o email não seja válido.
 });
 
 
@@ -45,5 +49,6 @@ test('testando se é aceito somente o domínio @ba.estudante.senai.br', () => {
 MemoryRouter é usado para testar componentes que dependem do roteamento sem precisar de um navegador real.
 render, fireEvent e screen são funções da Testing Library que permitem renderizar componentes, simular eventos do usuário e acessar elementos na tela, respectivamente.
 jest-dom fornece uma série de matchers personalizados para melhorar a legibilidade e a expressividade dos testes, como toBeInTheDocument, que verifica se um elemento está presente na árvore de renderização.
+
 O teste verifica se o campo de email aceita apenas endereços que terminam com @ba.estudante.senai.br, exibindo uma mensagem de erro para endereços inválidos e garantindo que não haja mensagem de erro para endereços válidos.
 */
